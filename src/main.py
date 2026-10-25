@@ -1,15 +1,25 @@
 from configuracao import *
 from sys import exit
 
+# componentes
+from jogo import Jogo
+from pontuacao import Pontuacao
+from previa import Previa
+
 class Main:
      def __init__(self):
           pygame.init()
           # Criando a superfície do jogo com o pygame 
-          self.exibir_superficie = pygame.display.set_mode((LARGURA_JANELA, LARGURA_JANELA))
+          self.exibir_superficie = pygame.display.set_mode((LARGURA_JANELA, ALTURA_JANELA))
           # Utilizaremos o relógio para várias coisas no jogo, já que ele permitirá que mexamos com o tempo do jogo.
           self.relogio = pygame.time.Clock()
           # Título da janela
           pygame.display.set_caption('Tetris')
+          
+          # componentes
+          self.jogo = Jogo() 
+          self.pontuacao = Pontuacao()
+          self.previa = Previa()
           
      def executar(self):
           while True:
@@ -22,6 +32,11 @@ class Main:
                # Exibição
                self.exibir_superficie.fill(CINZA)
              
+               # Componentes
+               self.jogo.executar()
+               self.pontuacao.executar()
+               self.previa.executar()
+               
                # Atualizando o jogo
                # Atualiza tudo que vemos dentro do jogo, assim podemos ver a janela do jogo
                pygame.display.update()
@@ -29,7 +44,7 @@ class Main:
                   Se quisermos que o jogo rode a 60fps apenas faça: self.relogio.clock.tick(60).
                   Caso não haja argumentos, o jogo rodará com a quantidade máxima de quadros por segundo
                '''
-               self.relogio.clock.tick()
+               self.relogio.tick()
                
 if __name__ == '__main__':
      main = Main()

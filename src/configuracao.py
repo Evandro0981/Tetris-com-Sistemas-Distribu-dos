@@ -5,11 +5,11 @@ import pygame
 COLUNAS = 10
 LINHAS = 20
 # Isso define o tamanho de cada célula da "matriz", ou janela do jogo.
-TAMANHO_CELULA = 20
+TAMANHO_CELULA = 40
 # Define a largura da janela do jogo.
-LARGURA_JOGO = LINHAS * TAMANHO_CELULA
+LARGURA_JOGO = COLUNAS * TAMANHO_CELULA
 # Define a altura da janela do jogo
-ALTURA_JOGO = COLUNAS * TAMANHO_CELULA 
+ALTURA_JOGO = LINHAS * TAMANHO_CELULA 
 
 # --Barra-lateral--
 # Aqui será definido uma janela lateral para o jogo.
@@ -28,6 +28,13 @@ ESPACAMENTO = 20
 LARGURA_JANELA = LARGURA_JOGO + LARGURA_BARRA_LATERAL + ESPACAMENTO * 3
 # Este cálculo serve para definir a altura da janela de agrupamento.
 ALTURA_JANELA = ALTURA_JOGO + ESPACAMENTO * 2
+
+# --Comportamento-do-Jogo--
+VELOCIDADE_ATUALIZACAO_INICIAL = 200
+TEMPO_ESPERA_MOVER = 200
+TEMPO_ESPERA_ROTACIONAR = 200
+DESLOCAMENTO_BLOCO = pygame.Vector2(COLUNAS // 2, -1)
+
 
 # Cores
 AMARELO = '#f1e60d'
