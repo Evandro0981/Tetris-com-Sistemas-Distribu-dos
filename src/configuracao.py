@@ -1,0 +1,41 @@
+import pygame
+
+# --Tamanho-da-Janela-do-Jogo--
+# Essa estrutura serve para definir os componentes da janela do jogo, imagine como se fosse uma matriz.
+COLUNAS = 10
+LINHAS = 20
+# Isso define o tamanho de cada célula da "matriz", ou janela do jogo.
+TAMANHO_CELULA = 20
+# Define a largura da janela do jogo.
+LARGURA_JOGO = LINHAS * TAMANHO_CELULA
+# Define a altura da janela do jogo
+ALTURA_JOGO = COLUNAS * TAMANHO_CELULA 
+
+# --Barra-lateral--
+# Aqui será definido uma janela lateral para o jogo.
+# Define 200px para a largura da janela lateral.
+LARGURA_BARRA_LATERAL = 200
+# Essa variável servira para separar 70% da área da barra lateral
+FRACAO_ALTURA_PREVIA = 0.7
+# Enquanto essa separa os 30% restantes.
+FRACAO_ALTURA_PONTUACAO = 1 - FRACAO_ALTURA_PREVIA
+
+# --Janela-Agrupamento--
+# Esta sessão serve para agrupar as duas janelas anteriores em uma janelas maior.
+# Define o espaçamento de 20px, entre as janelas do jogo e da janela maior, que irá agrupar elas.
+ESPACAMENTO = 20
+# Este cálculo serve para definir a largura da janela de agrupamento.
+LARGURA_JANELA = LARGURA_JOGO + LARGURA_BARRA_LATERAL + ESPACAMENTO * 3
+# Este cálculo serve para definir a altura da janela de agrupamento.
+ALTURA_JANELA = ALTURA_JOGO + ESPACAMENTO * 2
+
+# Cores
+AMARELO = '#f1e60d'
+RED = '#e51b20'
+AZUL = '#204b9b'
+VERDE = '#65b32e'
+ROXO = '#7b217f'
+CIANO = '#6cc6d9'
+LARANJA = '#f07e13'
+CINZA = '#1C1C1C'
+LINHA_COR = '#FFFFFF'
