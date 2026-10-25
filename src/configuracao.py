@@ -31,7 +31,7 @@ ALTURA_JANELA = ALTURA_JOGO + ESPACAMENTO * 2
 
 # Cores
 AMARELO = '#f1e60d'
-RED = '#e51b20'
+VERMELHO = '#e51b20'
 AZUL = '#204b9b'
 VERDE = '#65b32e'
 ROXO = '#7b217f'
