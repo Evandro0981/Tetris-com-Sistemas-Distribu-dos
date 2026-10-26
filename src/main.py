@@ -41,7 +41,7 @@ class Main:
                # Atualiza tudo que vemos dentro do jogo, assim podemos ver a janela do jogo
                pygame.display.update()
                '''clock' é um objeto que permite controlar os quadros (frames) do jogo, por exemplo:
-                  Se quisermos que o jogo rode a 60fps apenas faça: self.relogio.clock.tick(60).
+                  Se quisermos que o jogo rode a 60fps apenas faça: self.relogio.tick(60).
                   Caso não haja argumentos, o jogo rodará com a quantidade máxima de quadros por segundo
                '''
                self.relogio.tick()
