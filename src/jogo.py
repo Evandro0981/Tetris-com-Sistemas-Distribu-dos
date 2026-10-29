@@ -4,7 +4,7 @@
 '''
 
 from configuracao import *
-
+from random import choice
 
 class Jogo:
      def __init__(self):
@@ -14,6 +14,8 @@ class Jogo:
           self.mostrar_superficie = pygame.display.get_surface()
           # Estamos definindo um retangulo aqui, para tracejar uma borda para todo o jogo.
           self.retangulo = self.superficie.get_rect(topleft = (ESPACAMENTO, ESPACAMENTO))
+          self.sprites = pygame.sprite.Group()
+          
           
           # linhas
           self.superficie_linha = self.superficie.copy()
@@ -21,6 +23,8 @@ class Jogo:
           self.superficie_linha.set_colorkey((0, 255, 0))
           self.superficie_linha.set_alpha(120)
           
+          # tetromino
+          self.tetromino = Tetromino(choice(list(TETROMINOS.keys())), self.sprites)
           
      def desenhar_grade(self):
           '''  Observe que o metodo pygame.draw.line possui argumentos para representar o inicio e fim de uma linha.
@@ -48,9 +52,40 @@ class Jogo:
           
      def executar(self):
           self.superficie.fill(CINZA)
+          self.sprites.draw(self.superficie)
+           
           self.desenhar_grade()
-          
           # O método blit serve para colocarmos uma superficie em cima de outra superficie, nesse caso "superficie" -> "mostrar_superficie"
           self.mostrar_superficie.blit(self.superficie, (ESPACAMENTO, ESPACAMENTO))
           pygame.draw.rect(self.mostrar_superficie, LINHA_COR, self.retangulo, 2, 2)     
+
+class Tetromino:
+     def __init__(self, forma, grupo):
+          
+          # Base
+          self.posicoes_blocos = TETROMINOS[forma]['forma']
+          self.cor = TETROMINOS[forma]['cor']
+
+          # criando blocos
+          self.blocos = [Bloco(grupo, posicao, self.cor) for posicao in self.posicoes_blocos]
+
+'''  Classe Bloco servira para gerarmos os blocos do tetris
+     A herança com Sprite do pygame serve para conseguirmos mostrar uma superficie e posiciona-la de forma mais simples.'''
+class Bloco(pygame.sprite.Sprite):
      
+     '''  Alguns nomes precisam estar em ingles por exigência do próprio pygame, mais especificamente o método
+          "group.draw()", que exige atributos "image" e "rect", então na classe Bloco eles se manterão em ingles.'''
+     def __init__(self, grupo, posicao, cor):
+          # geral
+          super().__init__(grupo)
+          self.image = pygame.Surface((TAMANHO_CELULA, TAMANHO_CELULA))
+          self.image.fill(cor)
+          
+          # posicao
+          self.posicao = pygame.Vector2(posicao) + DESLOCAMENTO_BLOCO
+          
+          x = self.posicao[0] * TAMANHO_CELULA
+          y = self.posicao[1] * TAMANHO_CELULA
+          self.rect = self.image.get_rect(topleft = (x, y))
+          
+          

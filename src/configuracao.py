@@ -33,7 +33,7 @@ ALTURA_JANELA = ALTURA_JOGO + ESPACAMENTO * 2
 VELOCIDADE_ATUALIZACAO_INICIAL = 200
 TEMPO_ESPERA_MOVER = 200
 TEMPO_ESPERA_ROTACIONAR = 200
-DESLOCAMENTO_BLOCO = pygame.Vector2(COLUNAS // 2, -1)
+DESLOCAMENTO_BLOCO = pygame.Vector2(COLUNAS // 2, 5)
 
 # Cores
 AMARELO = '#f1e60d'
@@ -45,3 +45,14 @@ CIANO = '#6cc6d9'
 LARANJA = '#f07e13'
 CINZA = '#1C1C1C'
 LINHA_COR = '#FFFFFF'
+
+# formas
+TETROMINOS = {
+     'T': {'forma': [(0,0), (-1,0), (1,0), (0,-1)], 'cor': ROXO},
+     'O': {'forma': [(0,0), (0,-1), (1,0), (1,-1)], 'cor': AMARELO},
+     'J': {'forma': [(0,0), (0,-1), (0,1), (-1,1)], 'cor': AZUL},
+     'L': {'forma': [(0,0), (0,-1), (0,1), (1,1)], 'cor': LARANJA},
+     'I': {'forma': [(0,0), (0,-1), (0,-2), (0,1)], 'cor': CIANO},
+     'S': {'forma': [(0,0), (-1,0), (0,-1), (1,-1)], 'cor': VERDE},
+     'Z': {'forma': [(0,0), (1,0), (0,-1), (-1,-1)], 'cor': VERMELHO},
+}
